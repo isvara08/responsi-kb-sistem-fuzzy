@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Heatguard - Diagnosis {% if result.risk_level == 'Aman' %}Aman{% elif result.risk_level == 'Waspada' %}Waspada{% else %}Berbahaya{% endif %}</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;700&amp;family=Lexend:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#8aceff",
+                        "error": "#ba1a1a",
+                        "outline": "#6e7882",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#004b6f",
+                        "primary-fixed": "#c9e6ff",
+                        "surface-container-high": "#eae8e7",
+                        "on-secondary": "#ffffff",
+                        "on-primary-container": "#004465",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fbf9f8",
+                        "on-tertiary-fixed-variant": "#1f5100",
+                        "inverse-surface": "#303030",
+                        "surface-container-low": "#f5f3f3",
+                        "on-primary-fixed": "#001e2f",
+                        "on-background": "#1b1c1c",
+                        "surface-bright": "#fbf9f8",
+                        "primary": "#006491",
+                        "secondary-container": "#fc8a40",
+                        "on-surface": "#1b1c1c",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#3e4850",
+                        "tertiary-fixed-dim": "#6be026",
+                        "surface-container": "#efeded",
+                        "surface-dim": "#dbd9d9",
+                        "on-tertiary-container": "#1b4a00",
+                        "secondary-fixed": "#ffdbc9",
+                        "on-tertiary-fixed": "#082100",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#8aceff",
+                        "on-secondary-container": "#672c00",
+                        "error-container": "#ffdad6",
+                        "outline-variant": "#bdc8d2",
+                        "tertiary": "#2b6c00",
+                        "tertiary-fixed": "#87fe45",
+                        "secondary": "#9b4500",
+                        "tertiary-container": "#54c400",
+                        "primary-container": "#2bb6ff",
+                        "surface-tint": "#006491",
+                        "inverse-on-surface": "#f2f0f0",
+                        "on-secondary-fixed": "#331200",
+                        "surface": "#fbf9f8",
+                        "surface-container-highest": "#e4e2e2",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#763300",
+                        "secondary-fixed-dim": "#ffb68d",
+                        "surface-variant": "#e4e2e2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "unit": "8px",
+                        "stack-sm": "8px",
+                        "container-margin": "24px",
+                        "stack-lg": "32px",
+                        "stack-md": "20px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Be Vietnam Pro"],
+                        "body-lg": ["Be Vietnam Pro"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-bold": ["Lexend"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "500" }],
+                        "headline-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "800" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .squish-click:active {
+            transform: translateY(2px);
+            box-shadow: 0 0px 0 0 rgba(0,0,0,0);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                transform: translateX(-5px);
+            }
+            20%, 40%, 60%, 80% {
+                transform: translateX(5px);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            25% {
+                transform: translateY(-10px);
+            }
+            50% {
+                transform: translateY(0);
+            }
+            75% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes gaugeFill {
+            from {
+                stroke-dashoffset: 283;
+            }
+            to {
+                stroke-dashoffset: var(--dashoffset);
+            }
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .animate-slide-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-slide-right {
+            animation: slideInRight 0.8s ease-out forwards;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .animate-shake {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        .animate-bounce {
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .animate-rotate {
+            animation: rotate 20s linear infinite;
+        }
+
+        .animate-gauge {
+            animation: gaugeFill 1.5s ease-out forwards;
+        }
+
+        .animate-count-up {
+            animation: countUp 0.5s ease-out forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+
+        .delay-600 {
+            animation-delay: 0.6s;
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 0 0 rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+{% set bg_color = 'from-error-container via-[#ffe5e3] to-[#ffd8e4]' if result.risk_level == 'Berbahaya' else 'from-yellow-100 via-[#fff9d6] to-[#ffeec7]' if result.risk_level == 'Waspada' else 'from-emerald-100 via-[#e8f7e8] to-[#d4f7d4]' %}
+{% set header_color = 'text-error' if result.risk_level == 'Berbahaya' else 'text-yellow-600' if result.risk_level == 'Waspada' else 'text-emerald-600' %}
+{% set sub_header_color = 'text-on-error-container' if result.risk_level == 'Berbahaya' else 'text-yellow-700' if result.risk_level == 'Waspada' else 'text-emerald-700' %}
+{% set border_color = 'border-error' if result.risk_level == 'Berbahaya' else 'border-yellow-600' if result.risk_level == 'Waspada' else 'border-emerald-600' %}
+{% set shadow_color = 'rgba(186,26,26,0.15)' if result.risk_level == 'Berbahaya' else 'rgba(202,138,4,0.15)' if result.risk_level == 'Waspada' else 'rgba(16,185,129,0.15)' %}
+{% set gauge_color = 'text-error' if result.risk_level == 'Berbahaya' else 'text-yellow-600' if result.risk_level == 'Waspada' else 'text-emerald-600' %}
+{% set badge_bg = 'bg-error text-on-error' if result.risk_level == 'Berbahaya' else 'bg-yellow-600 text-white' if result.risk_level == 'Waspada' else 'bg-emerald-600 text-white' %}
+{% set header_text = 'Awas, Berbahaya!' if result.risk_level == 'Berbahaya' else 'Waspada, Perhatian!' if result.risk_level == 'Waspada' else 'Aman, Teruskan!' %}
+{% set sub_header_text = 'Suhu tubuhmu sangat tinggi. Segera cari pertolongan!' if result.risk_level == 'Berbahaya' else 'Kondisi tubuhmu perlu perhatian. Istirahat sejenak.' if result.risk_level == 'Waspada' else 'Kondisi tubuhmu aman. Tetap terhidrasi!' %}
+{% set advice_text = 'Heatstroke mengintai! Jangan anggap remeh. Lakukan langkah-langkah darurat di bawah ini sekarang juga.' if result.risk_level == 'Berbahaya' else 'Tubuhmu mulai kepanasan. Lakukan langkah pencegahan di bawah ini.' if result.risk_level == 'Waspada' else 'Tetap jaga kondisi tubuhmu dengan tips di bawah ini.' %}
+{% set dashoffset = '50' if result.risk_level == 'Berbahaya' else '150' if result.risk_level == 'Waspada' else '250' %}
+<body class="bg-gradient-to-br {{ bg_color }} relative min-h-screen flex flex-col font-body-md text-on-background selection:bg-primary-container selection:text-on-primary-container z-0" style="--dashoffset: {{ dashoffset }}">
+<!-- Decorative Background Elements -->
+<div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+<!-- Subtle Athletic Dot Pattern -->
+<div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle at 2px 2px, #ba1a1a 1px, transparent 0); background-size: 32px 32px;"></div>
+<!-- Floating Organic Shape 1 -->
+<svg class="absolute top-[-5%] left-[-10%] w-[50%] max-w-[600px] h-auto opacity-30 {{ header_color }} animate-[pulse_6s_ease-in-out_infinite]" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<path d="M45.7,-76.3C58.9,-69.3,69.1,-55.3,77.3,-40.4C85.5,-25.5,91.7,-9.6,90.2,5.7C88.7,21,79.5,35.8,69.1,48.8C58.7,61.8,47.1,73,32.7,79.8C18.3,86.6,1.1,89,-15.5,86.6C-32.1,84.2,-48.1,77,-61.1,65.3C-74.1,53.6,-84.1,37.4,-88.4,19.8C-92.7,2.2,-91.3,-16.8,-83.4,-32.4C-75.5,-48,-61.1,-60.2,-45.8,-66.8C-30.5,-73.4,-15.2,-74.4,1.1,-76.1C17.4,-77.8,32.5,-83.3,45.7,-76.3Z" fill="currentColor" transform="translate(100 100)"></path>
+</svg>
+<!-- Floating Organic Shape 2 -->
+<svg class="absolute bottom-[-10%] right-[-15%] w-[60%] max-w-[800px] h-auto opacity-20 text-secondary animate-[pulse_8s_ease-in-out_infinite_alternate]" viewbox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<path d="M51.9,-72.6C66,-62.7,75.4,-46.2,80.7,-28.5C86,-10.8,87.2,8.1,81.1,24.4C75,40.7,61.6,54.4,46.1,63.4C30.6,72.4,13,76.7,-4.1,82.3C-21.2,87.9,-37.9,94.8,-52.3,88.4C-66.7,82,-78.8,62.3,-84.5,41.9C-90.2,21.5,-89.5,0.4,-82.9,-18.2C-76.3,-36.8,-63.8,-52.9,-48.6,-62.6C-33.4,-72.3,-15.5,-75.6,1.9,-78.2C19.3,-80.8,37.8,-82.5,51.9,-72.6Z" fill="currentColor" transform="translate(100 100)"></path>
+</svg>
+</div>
+<!-- TopAppBar -->
+<!-- Main Content -->
+<main class="flex-grow p-container-margin flex flex-col items-center gap-stack-lg max-w-2xl mx-auto w-full relative z-10">
+<!-- Header Section -->
+<div class="text-center mt-stack-md w-full animate-fade-in-up opacity-0">
+<h1 class="font-headline-lg text-headline-lg {{ header_color }} mb-stack-sm drop-shadow-sm animate-scale-in opacity-0 delay-100 {% if result.risk_level == 'Berbahaya' %}animate-shake{% endif %}">{{ header_text }}</h1>
+<p class="font-body-lg text-body-lg {{ sub_header_color }} font-medium animate-slide-left opacity-0 delay-200">{{ sub_header_text }}</p>
+</div>
+<!-- Central Score Card -->
+<div class="bg-surface-container-lowest/95 backdrop-blur-sm rounded-xl p-8 w-full border-4 {{ border_color }} shadow-[0_8px_0_0_{{ shadow_color }}] relative overflow-hidden flex flex-col items-center text-center animate-scale-in opacity-0 delay-300">
+<!-- Decorative Elements -->
+<div class="absolute -top-10 -left-10 w-32 h-32 {{ header_color }} rounded-full opacity-10 mix-blend-multiply animate-pulse"></div>
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-secondary-container rounded-full opacity-10 mix-blend-multiply animate-pulse delay-200"></div>
+<div class="relative w-48 h-48 mb-6 flex items-center justify-center">
+<!-- Expressive Gauge Background -->
+<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<circle class="text-surface-variant" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-width="10"></circle>
+<circle class="{{ gauge_color }} animate-gauge" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="283" stroke-dashoffset="{{ dashoffset }}" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<div class="z-10 flex flex-col items-center">
+<span class="font-headline-lg text-[64px] leading-none {{ header_color }} animate-count-up opacity-0 delay-500">{{ result.crisp_output }}</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wide">Risiko</span>
+</div>
+</div>
+<div class="{{ badge_bg }} px-6 py-2 rounded-full font-label-bold text-label-bold flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">{% if result.risk_level == 'Berbahaya' %}warning{% elif result.risk_level == 'Waspada' %}priority_high{% else %}check_circle{% endif %}</span>
+                Tingkat Risiko: {{ result.risk_level.upper() }}
+            </div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm">
+                {{ advice_text }}
+            </p>
+</div>
+<!-- Action Steps List -->
+<div class="w-full flex flex-col gap-4 animate-fade-in-up opacity-0 delay-400">
+<h2 class="font-headline-md text-headline-md {{ sub_header_color }} text-center mb-2 drop-shadow-sm animate-scale-in opacity-0 delay-500">Langkah Cepat</h2>
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest/95 backdrop-blur-sm rounded-lg p-4 border-2 border-primary-container shadow-[0_4px_0_0_rgba(43,182,255,0.15)] flex items-center gap-4 squish-click transition-transform cursor-pointer hover-lift animate-slide-left opacity-0 delay-100">
+<div class="w-16 h-16 bg-primary-fixed rounded-full flex items-center justify-center text-primary border-2 border-primary-container animate-pulse">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">water_drop</span>
+</div>
+<div>
+<h3 class="font-label-bold text-label-bold text-primary">1. Minum Air</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Segera hidrasi tubuhmu dengan air putih atau isotonik.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-lowest/95 backdrop-blur-sm rounded-lg p-4 border-2 border-tertiary-container shadow-[0_4px_0_0_rgba(84,196,0,0.15)] flex items-center gap-4 squish-click transition-transform cursor-pointer hover-lift animate-slide-right opacity-0 delay-200">
+<div class="w-16 h-16 bg-tertiary-fixed rounded-full flex items-center justify-center text-tertiary border-2 border-tertiary-container animate-pulse delay-100">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">park</span>
+</div>
+<div>
+<h3 class="font-label-bold text-label-bold text-tertiary">2. Cari Tempat Teduh</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Pindah ke ruangan ber-AC atau tempat yang terhindar dari matahari.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-lowest/95 backdrop-blur-sm rounded-lg p-4 border-2 border-secondary-container shadow-[0_4px_0_0_rgba(252,138,64,0.15)] flex items-center gap-4 squish-click transition-transform cursor-pointer hover-lift animate-slide-left opacity-0 delay-300">
+<div class="w-16 h-16 bg-secondary-fixed rounded-full flex items-center justify-center text-secondary border-2 border-secondary-container animate-pulse delay-200">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">ac_unit</span>
+</div>
+<div>
+<h3 class="font-label-bold text-label-bold text-secondary">3. Kompres Dingin</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Gunakan es atau handuk basah pada leher dan ketiak.</p>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="bg-surface-container-lowest/95 backdrop-blur-sm rounded-lg p-4 border-2 {{ border_color }} shadow-[0_4px_0_0_{{ shadow_color }}] flex items-center gap-4 squish-click transition-transform cursor-pointer hover-lift animate-slide-right opacity-0 delay-400">
+<div class="w-16 h-16 bg-error-container rounded-full flex items-center justify-center {{ header_color }} border-2 {{ border_color }} animate-pulse delay-300">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">monitor_heart</span>
+</div>
+<div>
+<h3 class="font-label-bold text-label-bold {{ header_color }}">4. Pantau Gejala</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">Jika tidak membaik, hubungi bantuan medis secepatnya.</p>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="w-full mt-stack-md mb-stack-lg flex flex-col gap-4 animate-fade-in-up opacity-0 delay-500">
+<a href="/pertanyaan" class="w-full bg-white text-on-surface font-headline-md text-headline-md py-4 rounded-full border-4 border-primary-container shadow-[0_6px_0_0_rgba(43,182,255,0.4)] squish-click transition-all flex items-center justify-center gap-2 hover-lift animate-scale-in opacity-0 delay-100">
+<span class="material-symbols-outlined text-2xl animate-bounce" style="font-variation-settings: 'FILL' 1;">refresh</span>
+                Input Baru
+            </a>
+<a href="/" class="w-full bg-primary text-on-primary font-headline-md text-headline-md py-4 rounded-full border-4 border-primary-container shadow-[0_6px_0_0_rgba(43,182,255,0.4)] squish-click transition-all flex items-center justify-center gap-2 hover-lift animate-scale-in opacity-0 delay-200">
+<span class="material-symbols-outlined text-2xl">home</span>
+                Kembali ke Beranda
+            </a>
+</div>
+<!-- Fuzzy Details Section -->
+<div class="w-full bg-surface-container-lowest/95 backdrop-blur-sm rounded-xl p-6 border-2 border-outline-variant mt-4 animate-scale-in opacity-0 delay-600">
+<h3 class="font-headline-md text-headline-md text-on-surface text-center mb-4">Detail Perhitungan Fuzzy</h3>
+<div class="grid grid-cols-3 gap-3 mb-4">
+<div class="text-center">
+<p class="text-xs text-on-surface-variant mb-1">Detak Jantung: {{ heart_rate }} bpm</p>
+<p class="text-xs text-outline">N: {{ "%.2f"|format(result.fuzzy_values.heart_rate.normal) }}</p>
+<p class="text-xs text-outline">C: {{ "%.2f"|format(result.fuzzy_values.heart_rate.cepat) }}</p>
+<p class="text-xs text-outline">SC: {{ "%.2f"|format(result.fuzzy_values.heart_rate.sangat_cepat) }}</p>
+</div>
+<div class="text-center">
+<p class="text-xs text-on-surface-variant mb-1">Suhu: {{ temperature }} °C</p>
+<p class="text-xs text-outline">N: {{ "%.2f"|format(result.fuzzy_values.temperature.normal) }}</p>
+<p class="text-xs text-outline">H: {{ "%.2f"|format(result.fuzzy_values.temperature.hangat) }}</p>
+<p class="text-xs text-outline">P: {{ "%.2f"|format(result.fuzzy_values.temperature.panas) }}</p>
+</div>
+<div class="text-center">
+<p class="text-xs text-on-surface-variant mb-1">Durasi: {{ duration }} menit</p>
+<p class="text-xs text-outline">S: {{ "%.2f"|format(result.fuzzy_values.duration.singkat) }}</p>
+<p class="text-xs text-outline">M: {{ "%.2f"|format(result.fuzzy_values.duration.sedang) }}</p>
+<p class="text-xs text-outline">L: {{ "%.2f"|format(result.fuzzy_values.duration.lama) }}</p>
+</div>
+</div>
+<p class="text-center text-sm text-on-surface-variant">Aturan aktif: {{ result.active_rules }} / 17</p>
+</div>
+</main>
+<!-- Footer -->
+</body>
+</html>
