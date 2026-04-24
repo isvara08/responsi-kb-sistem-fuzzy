@@ -382,35 +382,59 @@
 </main>
 <!-- Footer -->
 <!-- Audio Control -->
-<audio id="bgAudio" loop>
+<audio id="bgAudio" loop preload="auto">
 <source src="/audio.mp3" type="audio/mpeg">
 </audio>
-<button id="audioToggle" class="fixed bottom-4 right-4 z-50 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg border-2 border-primary hover-lift transition-all squish-click" title="Toggle Audio">
+<button id="audioToggle" class="fixed bottom-4 right-4 z-50 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg border-2 border-primary hover-lift transition-all squish-click flex items-center justify-center" title="Toggle Audio">
 <span class="material-symbols-outlined text-2xl text-primary" id="audioIcon">volume_off</span>
 </button>
 <script>
-const audio = document.getElementById('bgAudio');
-const audioToggle = document.getElementById('audioToggle');
-const audioIcon = document.getElementById('audioIcon');
+    document.addEventListener('DOMContentLoaded', () => {
+        const audio = document.getElementById('bgAudio');
+        const audioToggle = document.getElementById('audioToggle');
+        const audioIcon = document.getElementById('audioIcon');
 
-// Check localStorage for audio state
-const audioState = localStorage.getItem('audioState');
-if (audioState === 'playing') {
-audio.play().catch(e => console.log('Autoplay prevented'));
-audioIcon.textContent = 'volume_up';
-}
+        const audioState = localStorage.getItem('audioState');
+        const audioTime = localStorage.getItem('audioTime');
 
-audioToggle.addEventListener('click', () => {
-if (audio.paused) {
-audio.play();
-audioIcon.textContent = 'volume_up';
-localStorage.setItem('audioState', 'playing');
-} else {
-audio.pause();
-audioIcon.textContent = 'volume_off';
-localStorage.setItem('audioState', 'paused');
-}
-});
+        if (audioTime) {
+            audio.currentTime = parseFloat(audioTime);
+        }
+
+        if (audioState === 'playing') {
+            audio.play().then(() => {
+                audioIcon.textContent = 'volume_up';
+            }).catch(e => {
+                console.log('Autoplay prevented by browser:', e);
+                audioIcon.textContent = 'volume_off';
+                localStorage.setItem('audioState', 'paused');
+            });
+        }
+
+        setInterval(() => {
+            if (!audio.paused) {
+                localStorage.setItem('audioTime', audio.currentTime);
+            }
+        }, 1000);
+        
+        window.addEventListener('beforeunload', () => {
+            localStorage.setItem('audioTime', audio.currentTime);
+        });
+
+        audioToggle.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    audioIcon.textContent = 'volume_up';
+                    localStorage.setItem('audioState', 'playing');
+                });
+            } else {
+                audio.pause();
+                audioIcon.textContent = 'volume_off';
+                localStorage.setItem('audioState', 'paused');
+                localStorage.setItem('audioTime', audio.currentTime);
+            }
+        });
+    });
 </script>
 </body>
 </html>

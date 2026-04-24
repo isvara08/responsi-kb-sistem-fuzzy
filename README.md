@@ -1,5 +1,15 @@
 # Sistem Deteksi Risiko Heatstroke dengan Fuzzy Logic Sugeno
 
+# Identitas Mahasiswa
+
+- **Nama:** Zahwa Nafiza Azzahra
+- **NIM:** H1D024015
+- **Shift KRS:** H
+- **Shift Sekarang:** F
+
+# Link Deployment
+**https://heatsense-fuzzy.vercel.app/**
+
 ## Deskripsi
 
 Sistem ini adalah aplikasi web berbasis Flask yang menggunakan metode **Fuzzy Logic Sugeno** untuk menghitung risiko heatstroke berdasarkan tiga parameter input:
@@ -80,11 +90,6 @@ pip install flask
 python app.py
 ```
 
-3. Buka browser dan akses:
-```
-http://127.0.0.1:5000
-```
-
 ## Screenshots
 
 ### Halaman Utama
@@ -102,12 +107,13 @@ Halaman analisis menyediakan form input dengan slider interaktif untuk memasukka
 
 Halaman hasil menampilkan tingkat risiko heatstroke dengan gauge visual, langkah-langkah yang disarankan, dan detail perhitungan fuzzy.
 
-## Author
 
-- **Nama**: Isvara
-- **Username GitHub**: isvara08
-- **Repository**: responsi-kb-sistem-fuzzy
+# Lisensi
 
-## Lisensi
+Proyek ini dibuat untuk keperluan akademik - Praktikum Kecerdasan Buatan.
 
-Project ini dibuat untuk keperluan responsi mata kuliah Kecerdasan Buatan.
+---
+
+<p align="center">
+  <b>🎓 Dibuat dengan ❤️ untuk Praktikum Kecerdasan Buatan 🎓</b>
+</p>
