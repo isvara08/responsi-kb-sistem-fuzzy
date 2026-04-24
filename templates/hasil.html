@@ -301,7 +301,7 @@
 {% set header_text = 'Awas, Berbahaya!' if result.risk_level == 'Berbahaya' else 'Waspada, Perhatian!' if result.risk_level == 'Waspada' else 'Aman, Teruskan!' %}
 {% set sub_header_text = 'Suhu tubuhmu sangat tinggi. Segera cari pertolongan!' if result.risk_level == 'Berbahaya' else 'Kondisi tubuhmu perlu perhatian. Istirahat sejenak.' if result.risk_level == 'Waspada' else 'Kondisi tubuhmu aman. Tetap terhidrasi!' %}
 {% set advice_text = 'Heatstroke mengintai! Jangan anggap remeh. Lakukan langkah-langkah darurat di bawah ini sekarang juga.' if result.risk_level == 'Berbahaya' else 'Tubuhmu mulai kepanasan. Lakukan langkah pencegahan di bawah ini.' if result.risk_level == 'Waspada' else 'Tetap jaga kondisi tubuhmu dengan tips di bawah ini.' %}
-{% set dashoffset = '0' if result.risk_level == 'Berbahaya' else '140' if result.risk_level == 'Waspada' else '283' %}
+{% set dashoffset = '0' if result.risk_level == 'Berbahaya' else '125' if result.risk_level == 'Waspada' else '251' %}
 <body class="bg-gradient-to-br {{ bg_color }} relative min-h-screen flex flex-col font-body-md text-on-background selection:bg-primary-container selection:text-on-primary-container z-0" style="--dashoffset: {{ dashoffset }}">
 <!-- Decorative Background Elements -->
 <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
@@ -331,13 +331,13 @@
 <div class="absolute -bottom-8 sm:-bottom-10 -right-8 sm:-right-10 w-32 h-32 sm:w-40 sm:h-40 bg-secondary-container rounded-full opacity-10 mix-blend-multiply animate-pulse delay-200"></div>
 <div class="relative w-36 h-36 sm:w-48 sm:h-48 mb-4 sm:mb-6 flex items-center justify-center">
 <!-- Expressive Gauge Background -->
-<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 100 100">
-<circle class="text-surface-variant" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-width="10"></circle>
-<circle class="{{ gauge_color }} animate-gauge" cx="50" cy="50" fill="none" r="45" stroke="currentColor" stroke-dasharray="283" stroke-dashoffset="{{ dashoffset }}" stroke-linecap="round" stroke-width="10"></circle>
+<svg class="absolute inset-0 w-full h-full transform -rotate-90 z-0" viewbox="0 0 100 100">
+<circle class="text-surface-variant" cx="50" cy="50" fill="none" r="40" stroke="currentColor" stroke-width="8"></circle>
+<circle class="{{ gauge_color }} animate-gauge" cx="50" cy="50" fill="none" r="40" stroke="currentColor" stroke-dasharray="251" stroke-dashoffset="{{ dashoffset }}" stroke-linecap="round" stroke-width="8"></circle>
 </svg>
-<div class="z-20 flex flex-col items-center pointer-events-none">
-<span class="font-headline-lg text-[48px] sm:text-[64px] leading-none {{ header_color }} animate-count-up opacity-0 delay-500">{{ result.crisp_output }}</span>
-<span class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wide text-xs sm:text-sm">Risiko</span>
+<div class="z-50 flex flex-col items-center pointer-events-none relative">
+<span class="font-headline-lg text-[48px] sm:text-[64px] leading-none {{ header_color }} animate-count-up opacity-0 delay-500" style="text-shadow: 0 0 20px rgba(255,255,255,0.8), 0 0 40px rgba(255,255,255,0.6);">{{ result.crisp_output }}</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wide text-xs sm:text-sm" style="text-shadow: 0 0 10px rgba(255,255,255,0.5);">Risiko</span>
 </div>
 </div>
 <div class="{{ badge_bg }} px-4 sm:px-6 py-2 rounded-full font-label-bold text-label-bold flex items-center gap-2 mb-4 text-xs sm:text-sm">
