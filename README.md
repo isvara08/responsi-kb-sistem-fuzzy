@@ -90,11 +90,6 @@ pip install flask
 python app.py
 ```
 
-3. Buka browser dan akses:
-```
-http://127.0.0.1:5000
-```
-
 ## Screenshots
 
 ### Halaman Utama
@@ -111,12 +106,6 @@ Halaman analisis menyediakan form input dengan slider interaktif untuk memasukka
 ![Halaman Hasil](screenshots/halaman_hasil.png)
 
 Halaman hasil menampilkan tingkat risiko heatstroke dengan gauge visual, langkah-langkah yang disarankan, dan detail perhitungan fuzzy.
-
-## Author
-
-- **Nama**: Isvara
-- **Username GitHub**: isvara08
-- **Repository**: responsi-kb-sistem-fuzzy
 
 ## Lisensi
 
