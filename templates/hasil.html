@@ -331,14 +331,14 @@
 <div class="absolute -bottom-8 sm:-bottom-10 -right-8 sm:-right-10 w-32 h-32 sm:w-40 sm:h-40 bg-secondary-container rounded-full opacity-10 mix-blend-multiply animate-pulse delay-200"></div>
 <div class="flex flex-col items-center gap-4 sm:gap-6 mb-4 sm:mb-6">
 <!-- Expressive Gauge Background -->
-<div class="relative w-40 h-40 sm:w-56 md:w-64 flex items-center justify-center">
+<div class="relative w-64 h-64 sm:w-72 md:w-80 flex items-center justify-center">
 <svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 100 100">
 <circle class="text-surface-variant" cx="50" cy="50" fill="none" r="40" stroke="currentColor" stroke-width="8"></circle>
 <circle class="{{ gauge_color }} animate-gauge" cx="50" cy="50" fill="none" r="40" stroke="currentColor" stroke-dasharray="251" stroke-dashoffset="{{ dashoffset }}" stroke-linecap="round" stroke-width="8"></circle>
 </svg>
 <!-- Text inside gauge -->
 <div class="absolute inset-0 flex flex-col items-center justify-center z-50">
-<span class="font-headline-lg text-[32px] sm:text-[48px] md:text-[56px] leading-none {{ header_color }} animate-count-up opacity-0 delay-500">{{ result.crisp_output }}</span>
+<span class="font-headline-lg text-[48px] sm:text-[64px] md:text-[72px] leading-none {{ header_color }} animate-count-up opacity-0 delay-500">{{ result.crisp_output }}</span>
 <span class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wide text-xs sm:text-sm">Risiko</span>
 </div>
 </div>
