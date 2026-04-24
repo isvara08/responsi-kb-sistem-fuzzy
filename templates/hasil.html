@@ -318,7 +318,7 @@
 </div>
 <!-- TopAppBar -->
 <!-- Main Content -->
-<main class="flex-grow p-container-margin flex flex-col items-center gap-stack-lg max-w-2xl mx-auto w-full relative z-10">
+<main class="flex-grow px-4 sm:px-6 md:p-container-margin flex flex-col items-center gap-8 md:gap-stack-lg max-w-2xl mx-auto w-full relative z-10">
 <!-- Header Section -->
 <div class="text-center mt-stack-md w-full animate-fade-in-up opacity-0">
 <h1 class="font-headline-lg text-headline-lg {{ header_color }} mb-stack-sm drop-shadow-sm animate-scale-in opacity-0 delay-100 {% if result.risk_level == 'Berbahaya' %}animate-shake{% endif %}">{{ header_text }}</h1>
@@ -331,14 +331,14 @@
 <div class="absolute -bottom-8 sm:-bottom-10 -right-8 sm:-right-10 w-32 h-32 sm:w-40 sm:h-40 bg-secondary-container rounded-full opacity-10 mix-blend-multiply animate-pulse delay-200"></div>
 <div class="flex flex-col items-center gap-4 sm:gap-6 mb-4 sm:mb-6">
 <!-- Expressive Gauge Background -->
-<div class="relative w-48 h-48 sm:w-64 sm:h-64 flex items-center justify-center">
+<div class="relative w-40 h-40 sm:w-56 md:w-64 flex items-center justify-center">
 <svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 100 100">
 <circle class="text-surface-variant" cx="50" cy="50" fill="none" r="40" stroke="currentColor" stroke-width="8"></circle>
 <circle class="{{ gauge_color }} animate-gauge" cx="50" cy="50" fill="none" r="40" stroke="currentColor" stroke-dasharray="251" stroke-dashoffset="{{ dashoffset }}" stroke-linecap="round" stroke-width="8"></circle>
 </svg>
 <!-- Text inside gauge -->
 <div class="absolute inset-0 flex flex-col items-center justify-center z-50">
-<span class="font-headline-lg text-[40px] sm:text-[56px] leading-none {{ header_color }} animate-count-up opacity-0 delay-500">{{ result.crisp_output }}</span>
+<span class="font-headline-lg text-[32px] sm:text-[48px] md:text-[56px] leading-none {{ header_color }} animate-count-up opacity-0 delay-500">{{ result.crisp_output }}</span>
 <span class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wide text-xs sm:text-sm">Risiko</span>
 </div>
 </div>
@@ -409,24 +409,30 @@
 <!-- Fuzzy Details Section -->
 <div class="w-full bg-surface-container-lowest/95 backdrop-blur-sm rounded-xl p-4 sm:p-6 border-2 border-outline-variant mt-4 animate-scale-in opacity-0 delay-600">
 <h3 class="font-headline-md text-headline-md text-on-surface text-center mb-3 sm:mb-4 text-sm sm:text-base">Detail Perhitungan Fuzzy</h3>
-<div class="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3 mb-3 sm:mb-4">
-<div class="text-center">
-<p class="text-xs text-on-surface-variant mb-1">Detak Jantung: {{ heart_rate }} bpm</p>
-<p class="text-xs text-outline">N: {{ "%.2f"|format(result.fuzzy_values.heart_rate.normal) }}</p>
-<p class="text-xs text-outline">C: {{ "%.2f"|format(result.fuzzy_values.heart_rate.cepat) }}</p>
-<p class="text-xs text-outline">SC: {{ "%.2f"|format(result.fuzzy_values.heart_rate.sangat_cepat) }}</p>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
+<div class="text-center p-2 bg-white/50 rounded-lg">
+<p class="text-xs font-bold text-on-surface-variant mb-1">Detak Jantung: {{ heart_rate }} bpm</p>
+<div class="flex justify-center gap-2">
+<p class="text-[10px] text-outline">N: {{ "%.2f"|format(result.fuzzy_values.heart_rate.normal) }}</p>
+<p class="text-[10px] text-outline">C: {{ "%.2f"|format(result.fuzzy_values.heart_rate.cepat) }}</p>
+<p class="text-[10px] text-outline">SC: {{ "%.2f"|format(result.fuzzy_values.heart_rate.sangat_cepat) }}</p>
 </div>
-<div class="text-center">
-<p class="text-xs text-on-surface-variant mb-1">Suhu: {{ temperature }} °C</p>
-<p class="text-xs text-outline">N: {{ "%.2f"|format(result.fuzzy_values.temperature.normal) }}</p>
-<p class="text-xs text-outline">H: {{ "%.2f"|format(result.fuzzy_values.temperature.hangat) }}</p>
-<p class="text-xs text-outline">P: {{ "%.2f"|format(result.fuzzy_values.temperature.panas) }}</p>
 </div>
-<div class="text-center">
-<p class="text-xs text-on-surface-variant mb-1">Durasi: {{ duration }} menit</p>
-<p class="text-xs text-outline">S: {{ "%.2f"|format(result.fuzzy_values.duration.singkat) }}</p>
-<p class="text-xs text-outline">M: {{ "%.2f"|format(result.fuzzy_values.duration.sedang) }}</p>
-<p class="text-xs text-outline">L: {{ "%.2f"|format(result.fuzzy_values.duration.lama) }}</p>
+<div class="text-center p-2 bg-white/50 rounded-lg">
+<p class="text-xs font-bold text-on-surface-variant mb-1">Suhu: {{ temperature }} °C</p>
+<div class="flex justify-center gap-2">
+<p class="text-[10px] text-outline">N: {{ "%.2f"|format(result.fuzzy_values.temperature.normal) }}</p>
+<p class="text-[10px] text-outline">H: {{ "%.2f"|format(result.fuzzy_values.temperature.hangat) }}</p>
+<p class="text-[10px] text-outline">P: {{ "%.2f"|format(result.fuzzy_values.temperature.panas) }}</p>
+</div>
+</div>
+<div class="text-center p-2 bg-white/50 rounded-lg">
+<p class="text-xs font-bold text-on-surface-variant mb-1">Durasi: {{ duration }} menit</p>
+<div class="flex justify-center gap-2">
+<p class="text-[10px] text-outline">S: {{ "%.2f"|format(result.fuzzy_values.duration.singkat) }}</p>
+<p class="text-[10px] text-outline">M: {{ "%.2f"|format(result.fuzzy_values.duration.sedang) }}</p>
+<p class="text-[10px] text-outline">L: {{ "%.2f"|format(result.fuzzy_values.duration.lama) }}</p>
+</div>
 </div>
 </div>
 <p class="text-center text-xs sm:text-sm text-on-surface-variant">Aturan aktif: {{ result.active_rules }} / 17</p>

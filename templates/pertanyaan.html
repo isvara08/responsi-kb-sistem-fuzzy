@@ -348,7 +348,7 @@
 </div>
 <!-- TopAppBar -->
 <!-- Main Content -->
-<main class="flex-grow w-full max-w-[800px] mx-auto px-container-margin py-stack-lg flex flex-col gap-stack-lg relative z-10">
+<main class="flex-grow w-full max-w-[800px] mx-auto px-4 sm:px-6 md:px-container-margin py-6 sm:py-stack-lg flex flex-col gap-8 relative z-10">
 <!-- Header Section -->
 <section class="text-center bg-white/60 backdrop-blur-sm p-4 sm:p-6 rounded-3xl border-2 border-white/80 shadow-sm inline-block mx-auto animate-fade-in-up opacity-0">
 <h1 class="font-headline-lg text-headline-lg text-primary mb-unit animate-scale-in opacity-0 delay-100">Masukkan Data Kamu</h1>
@@ -362,16 +362,16 @@
 <div class="absolute -right-4 sm:-right-6 -top-4 sm:-top-6 opacity-10 animate-pulse">
 <span class="material-symbols-outlined text-[80px] sm:text-[120px] text-error" style="font-variation-settings: 'FILL' 1;">favorite</span>
 </div>
-<div class="flex items-center justify-between z-10">
-<div class="flex items-center gap-2 sm:gap-3">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 z-10">
+<div class="flex items-center gap-3">
 <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-error-container flex items-center justify-center text-error">
 <span class="material-symbols-outlined text-2xl sm:text-3xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
 </div>
-<h2 class="font-headline-md text-headline-md text-on-surface text-sm sm:text-base">Detak Jantung</h2>
+<h2 class="font-headline-md text-headline-md text-on-surface text-base sm:text-lg">Detak Jantung</h2>
 </div>
-<div class="flex items-baseline gap-1 bg-white px-3 sm:px-4 py-2 rounded-full border-2 border-error-container">
+<div class="flex items-baseline gap-1 bg-white px-4 py-2 rounded-full border-2 border-error-container w-fit self-end sm:self-auto">
 <span class="font-headline-lg text-headline-lg text-error value-pop text-2xl sm:text-3xl" id="hr-display">85</span>
-<span class="font-label-bold text-label-bold text-outline text-xs sm:text-sm">bpm</span>
+<span class="font-label-bold text-label-bold text-outline text-sm">bpm</span>
 </div>
 </div>
 <div class="z-10 mt-2">
@@ -387,16 +387,16 @@
 <div class="absolute -right-4 sm:-right-6 -top-4 sm:-top-6 opacity-10 animate-pulse delay-100">
 <span class="material-symbols-outlined text-[80px] sm:text-[120px] text-secondary" style="font-variation-settings: 'FILL' 1;">device_thermostat</span>
 </div>
-<div class="flex items-center justify-between z-10">
-<div class="flex items-center gap-2 sm:gap-3">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 z-10">
+<div class="flex items-center gap-3">
 <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
 <span class="material-symbols-outlined text-2xl sm:text-3xl" style="font-variation-settings: 'FILL' 1;">device_thermostat</span>
 </div>
-<h2 class="font-headline-md text-headline-md text-on-surface text-sm sm:text-base">Suhu Tubuh</h2>
+<h2 class="font-headline-md text-headline-md text-on-surface text-base sm:text-lg">Suhu Tubuh</h2>
 </div>
-<div class="flex items-baseline gap-1 bg-white px-3 sm:px-4 py-2 rounded-full border-2 border-secondary-fixed">
+<div class="flex items-baseline gap-1 bg-white px-4 py-2 rounded-full border-2 border-secondary-fixed w-fit self-end sm:self-auto">
 <span class="font-headline-lg text-headline-lg text-secondary value-pop text-2xl sm:text-3xl" id="temp-display">36.5</span>
-<span class="font-label-bold text-label-bold text-outline text-xs sm:text-sm">°C</span>
+<span class="font-label-bold text-label-bold text-outline text-sm">°C</span>
 </div>
 </div>
 <div class="z-10 mt-2">
@@ -412,16 +412,16 @@
 <div class="absolute -right-4 sm:-right-6 -top-4 sm:-top-6 opacity-10 animate-pulse delay-200">
 <span class="material-symbols-outlined text-[80px] sm:text-[120px] text-tertiary" style="font-variation-settings: 'FILL' 1;">timer</span>
 </div>
-<div class="flex items-center justify-between z-10">
-<div class="flex items-center gap-2 sm:gap-3">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 z-10">
+<div class="flex items-center gap-3">
 <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary">
 <span class="material-symbols-outlined text-2xl sm:text-3xl" style="font-variation-settings: 'FILL' 1;">timer</span>
 </div>
-<h2 class="font-headline-md text-headline-md text-on-surface text-sm sm:text-base">Lama Latihan</h2>
+<h2 class="font-headline-md text-headline-md text-on-surface text-base sm:text-lg">Lama Latihan</h2>
 </div>
-<div class="flex items-baseline gap-1 bg-white px-3 sm:px-4 py-2 rounded-full border-2 border-tertiary-fixed">
+<div class="flex items-baseline gap-1 bg-white px-4 py-2 rounded-full border-2 border-tertiary-fixed w-fit self-end sm:self-auto">
 <span class="font-headline-lg text-headline-lg text-tertiary value-pop text-2xl sm:text-3xl" id="dur-display">45</span>
-<span class="font-label-bold text-label-bold text-outline text-xs sm:text-sm">menit</span>
+<span class="font-label-bold text-label-bold text-outline text-sm">menit</span>
 </div>
 </div>
 <div class="z-10 mt-2">
