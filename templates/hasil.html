@@ -301,7 +301,7 @@
 {% set header_text = 'Awas, Berbahaya!' if result.risk_level == 'Berbahaya' else 'Waspada, Perhatian!' if result.risk_level == 'Waspada' else 'Aman, Teruskan!' %}
 {% set sub_header_text = 'Suhu tubuhmu sangat tinggi. Segera cari pertolongan!' if result.risk_level == 'Berbahaya' else 'Kondisi tubuhmu perlu perhatian. Istirahat sejenak.' if result.risk_level == 'Waspada' else 'Kondisi tubuhmu aman. Tetap terhidrasi!' %}
 {% set advice_text = 'Heatstroke mengintai! Jangan anggap remeh. Lakukan langkah-langkah darurat di bawah ini sekarang juga.' if result.risk_level == 'Berbahaya' else 'Tubuhmu mulai kepanasan. Lakukan langkah pencegahan di bawah ini.' if result.risk_level == 'Waspada' else 'Tetap jaga kondisi tubuhmu dengan tips di bawah ini.' %}
-{% set dashoffset = '0' if result.risk_level == 'Berbahaya' else '125' if result.risk_level == 'Waspada' else '251' %}
+{% set dashoffset = '0' if result.risk_level == 'Berbahaya' else '110' if result.risk_level == 'Waspada' else '220' %}
 <body class="bg-gradient-to-br {{ bg_color }} relative min-h-screen flex flex-col font-body-md text-on-background selection:bg-primary-container selection:text-on-primary-container z-0" style="--dashoffset: {{ dashoffset }}">
 <!-- Decorative Background Elements -->
 <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
@@ -332,12 +332,12 @@
 <div class="relative w-36 h-36 sm:w-48 sm:h-48 mb-4 sm:mb-6 flex items-center justify-center">
 <!-- Expressive Gauge Background -->
 <svg class="absolute inset-0 w-full h-full transform -rotate-90 z-0" viewbox="0 0 100 100">
-<circle class="text-surface-variant" cx="50" cy="50" fill="none" r="40" stroke="currentColor" stroke-width="8"></circle>
-<circle class="{{ gauge_color }} animate-gauge" cx="50" cy="50" fill="none" r="40" stroke="currentColor" stroke-dasharray="251" stroke-dashoffset="{{ dashoffset }}" stroke-linecap="round" stroke-width="8"></circle>
+<circle class="text-surface-variant" cx="50" cy="50" fill="none" r="35" stroke="currentColor" stroke-width="8"></circle>
+<circle class="{{ gauge_color }} animate-gauge" cx="50" cy="50" fill="none" r="35" stroke="currentColor" stroke-dasharray="220" stroke-dashoffset="{{ dashoffset }}" stroke-linecap="round" stroke-width="8"></circle>
 </svg>
 <!-- Text background circle -->
 <div class="absolute inset-0 flex items-center justify-center z-10">
-<div class="w-20 h-20 sm:w-28 sm:h-28 rounded-full bg-white/90 backdrop-blur-sm"></div>
+<div class="w-36 h-36 sm:w-48 sm:h-48 rounded-full bg-white shadow-2xl"></div>
 </div>
 <div class="z-50 flex flex-col items-center pointer-events-none relative">
 <span class="font-headline-lg text-[48px] sm:text-[64px] leading-none {{ header_color }} animate-count-up opacity-0 delay-500">{{ result.crisp_output }}</span>
