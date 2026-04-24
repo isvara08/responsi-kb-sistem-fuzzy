@@ -329,17 +329,16 @@
 <!-- Decorative Elements -->
 <div class="absolute -top-8 sm:-top-10 -left-8 sm:-left-10 w-24 h-24 sm:w-32 sm:h-32 {{ header_color }} rounded-full opacity-10 mix-blend-multiply animate-pulse"></div>
 <div class="absolute -bottom-8 sm:-bottom-10 -right-8 sm:-right-10 w-32 h-32 sm:w-40 sm:h-40 bg-secondary-container rounded-full opacity-10 mix-blend-multiply animate-pulse delay-200"></div>
-<div class="relative w-36 h-36 sm:w-48 sm:h-48 mb-4 sm:mb-6 flex items-center justify-center">
+<div class="flex flex-col items-center gap-4 sm:gap-6 mb-4 sm:mb-6">
 <!-- Expressive Gauge Background -->
-<svg class="absolute inset-0 w-full h-full transform -rotate-90 z-0" viewbox="0 0 100 100">
+<div class="relative w-36 h-36 sm:w-48 sm:h-48 flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full transform -rotate-90" viewbox="0 0 100 100">
 <circle class="text-surface-variant" cx="50" cy="50" fill="none" r="35" stroke="currentColor" stroke-width="8"></circle>
 <circle class="{{ gauge_color }} animate-gauge" cx="50" cy="50" fill="none" r="35" stroke="currentColor" stroke-dasharray="220" stroke-dashoffset="{{ dashoffset }}" stroke-linecap="round" stroke-width="8"></circle>
 </svg>
-<!-- Text background circle -->
-<div class="absolute inset-0 flex items-center justify-center z-10">
-<div class="w-36 h-36 sm:w-48 sm:h-48 rounded-full bg-white shadow-2xl"></div>
 </div>
-<div class="z-50 flex flex-col items-center pointer-events-none relative">
+<!-- Text below gauge -->
+<div class="flex flex-col items-center z-50">
 <span class="font-headline-lg text-[48px] sm:text-[64px] leading-none {{ header_color }} animate-count-up opacity-0 delay-500">{{ result.crisp_output }}</span>
 <span class="font-label-bold text-label-bold text-on-surface-variant uppercase tracking-wide text-xs sm:text-sm">Risiko</span>
 </div>
