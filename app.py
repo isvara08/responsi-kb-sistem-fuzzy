@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, send_from_directory
 
 app = Flask(__name__)
 
@@ -238,9 +238,14 @@ def calculate():
     heart_rate = float(data.get('heart_rate', 70))
     temperature = float(data.get('temperature', 36.5))
     duration = float(data.get('duration', 30))
-    
+
     result = calculate_heatstroke_risk(heart_rate, temperature, duration)
     return jsonify(result)
+
+
+@app.route('/audio.mp3')
+def serve_audio():
+    return send_from_directory('.', 'audio.mp3')
 
 
 if __name__ == '__main__':
