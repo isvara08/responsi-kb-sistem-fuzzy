@@ -109,9 +109,9 @@
                               }
                       ],
                       "headline-lg": [
-                              "36px",
+                              "28px",
                               {
-                                      "lineHeight": "44px",
+                                      "lineHeight": "36px",
                                       "letterSpacing": "-0.02em",
                                       "fontWeight": "800"
                               }
@@ -124,12 +124,18 @@
                               }
                       ],
                       "headline-md": [
-                              "24px",
+                              "20px",
                               {
-                                      "lineHeight": "32px",
+                                      "lineHeight": "28px",
                                       "fontWeight": "800"
                               }
                       ]
+              },
+              "screens": {
+                      "sm": "640px",
+                      "md": "768px",
+                      "lg": "1024px",
+                      "xl": "1280px"
               }
             },
           }
@@ -344,7 +350,7 @@
 <!-- Main Content -->
 <main class="flex-grow w-full max-w-[800px] mx-auto px-container-margin py-stack-lg flex flex-col gap-stack-lg relative z-10">
 <!-- Header Section -->
-<section class="text-center bg-white/60 backdrop-blur-sm p-6 rounded-3xl border-2 border-white/80 shadow-sm inline-block mx-auto animate-fade-in-up opacity-0">
+<section class="text-center bg-white/60 backdrop-blur-sm p-4 sm:p-6 rounded-3xl border-2 border-white/80 shadow-sm inline-block mx-auto animate-fade-in-up opacity-0">
 <h1 class="font-headline-lg text-headline-lg text-primary mb-unit animate-scale-in opacity-0 delay-100">Masukkan Data Kamu</h1>
 <p class="font-body-lg text-body-lg text-on-surface-variant animate-slide-left opacity-0 delay-200">Bantu kami pantau kondisimu hari ini!</p>
 </section>
@@ -352,75 +358,75 @@
 <form action="/hasil" method="POST">
 <section class="flex flex-col gap-stack-md">
 <!-- Card 1: Detak Jantung -->
-<div class="bg-surface-container-lowest/90 backdrop-blur-md rounded-xl p-6 border-4 border-error-container squishy-shadow-blue flex flex-col gap-4 relative overflow-hidden hover-lift animate-scale-in opacity-0 delay-300">
-<div class="absolute -right-6 -top-6 opacity-10 animate-pulse">
-<span class="material-symbols-outlined text-[120px] text-error" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<div class="bg-surface-container-lowest/90 backdrop-blur-md rounded-xl p-4 sm:p-6 border-4 border-error-container squishy-shadow-blue flex flex-col gap-3 sm:gap-4 relative overflow-hidden hover-lift animate-scale-in opacity-0 delay-300">
+<div class="absolute -right-4 sm:-right-6 -top-4 sm:-top-6 opacity-10 animate-pulse">
+<span class="material-symbols-outlined text-[80px] sm:text-[120px] text-error" style="font-variation-settings: 'FILL' 1;">favorite</span>
 </div>
 <div class="flex items-center justify-between z-10">
-<div class="flex items-center gap-3">
-<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center text-error">
-<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<div class="flex items-center gap-2 sm:gap-3">
+<div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-error-container flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-2xl sm:text-3xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
 </div>
-<h2 class="font-headline-md text-headline-md text-on-surface">Detak Jantung</h2>
+<h2 class="font-headline-md text-headline-md text-on-surface text-sm sm:text-base">Detak Jantung</h2>
 </div>
-<div class="flex items-baseline gap-1 bg-white px-4 py-2 rounded-full border-2 border-error-container">
-<span class="font-headline-lg text-headline-lg text-error value-pop" id="hr-display">85</span>
-<span class="font-label-bold text-label-bold text-outline">bpm</span>
+<div class="flex items-baseline gap-1 bg-white px-3 sm:px-4 py-2 rounded-full border-2 border-error-container">
+<span class="font-headline-lg text-headline-lg text-error value-pop text-2xl sm:text-3xl" id="hr-display">85</span>
+<span class="font-label-bold text-label-bold text-outline text-xs sm:text-sm">bpm</span>
 </div>
 </div>
 <div class="z-10 mt-2">
 <input class="w-full appearance-none bg-transparent text-error" max="200" min="50" type="range" id="heart-rate" name="heart_rate" value="85" oninput="updateHeartRate(this.value)"/>
-<div class="flex justify-between mt-2 font-label-bold text-label-bold text-outline">
+<div class="flex justify-between mt-2 font-label-bold text-label-bold text-outline text-xs sm:text-sm">
 <span>50</span>
 <span>200</span>
 </div>
 </div>
 </div>
 <!-- Card 2: Suhu Tubuh -->
-<div class="bg-surface-container-lowest/90 backdrop-blur-md rounded-xl p-6 border-4 border-secondary-fixed squishy-shadow-blue flex flex-col gap-4 relative overflow-hidden hover-lift animate-scale-in opacity-0 delay-400">
-<div class="absolute -right-6 -top-6 opacity-10 animate-pulse delay-100">
-<span class="material-symbols-outlined text-[120px] text-secondary" style="font-variation-settings: 'FILL' 1;">device_thermostat</span>
+<div class="bg-surface-container-lowest/90 backdrop-blur-md rounded-xl p-4 sm:p-6 border-4 border-secondary-fixed squishy-shadow-blue flex flex-col gap-3 sm:gap-4 relative overflow-hidden hover-lift animate-scale-in opacity-0 delay-400">
+<div class="absolute -right-4 sm:-right-6 -top-4 sm:-top-6 opacity-10 animate-pulse delay-100">
+<span class="material-symbols-outlined text-[80px] sm:text-[120px] text-secondary" style="font-variation-settings: 'FILL' 1;">device_thermostat</span>
 </div>
 <div class="flex items-center justify-between z-10">
-<div class="flex items-center gap-3">
-<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
-<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">device_thermostat</span>
+<div class="flex items-center gap-2 sm:gap-3">
+<div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-2xl sm:text-3xl" style="font-variation-settings: 'FILL' 1;">device_thermostat</span>
 </div>
-<h2 class="font-headline-md text-headline-md text-on-surface">Suhu Tubuh</h2>
+<h2 class="font-headline-md text-headline-md text-on-surface text-sm sm:text-base">Suhu Tubuh</h2>
 </div>
-<div class="flex items-baseline gap-1 bg-white px-4 py-2 rounded-full border-2 border-secondary-fixed">
-<span class="font-headline-lg text-headline-lg text-secondary value-pop" id="temp-display">36.5</span>
-<span class="font-label-bold text-label-bold text-outline">°C</span>
+<div class="flex items-baseline gap-1 bg-white px-3 sm:px-4 py-2 rounded-full border-2 border-secondary-fixed">
+<span class="font-headline-lg text-headline-lg text-secondary value-pop text-2xl sm:text-3xl" id="temp-display">36.5</span>
+<span class="font-label-bold text-label-bold text-outline text-xs sm:text-sm">°C</span>
 </div>
 </div>
 <div class="z-10 mt-2">
 <input class="w-full appearance-none bg-transparent text-secondary" max="42" min="35" step="0.1" type="range" id="temperature" name="temperature" value="36.5" oninput="updateTemperature(this.value)"/>
-<div class="flex justify-between mt-2 font-label-bold text-label-bold text-outline">
+<div class="flex justify-between mt-2 font-label-bold text-label-bold text-outline text-xs sm:text-sm">
 <span>35</span>
 <span>42</span>
 </div>
 </div>
 </div>
 <!-- Card 3: Lama Latihan -->
-<div class="bg-surface-container-lowest/90 backdrop-blur-md rounded-xl p-6 border-4 border-tertiary-fixed squishy-shadow-blue flex flex-col gap-4 relative overflow-hidden hover-lift animate-scale-in opacity-0 delay-500">
-<div class="absolute -right-6 -top-6 opacity-10 animate-pulse delay-200">
-<span class="material-symbols-outlined text-[120px] text-tertiary" style="font-variation-settings: 'FILL' 1;">timer</span>
+<div class="bg-surface-container-lowest/90 backdrop-blur-md rounded-xl p-4 sm:p-6 border-4 border-tertiary-fixed squishy-shadow-blue flex flex-col gap-3 sm:gap-4 relative overflow-hidden hover-lift animate-scale-in opacity-0 delay-500">
+<div class="absolute -right-4 sm:-right-6 -top-4 sm:-top-6 opacity-10 animate-pulse delay-200">
+<span class="material-symbols-outlined text-[80px] sm:text-[120px] text-tertiary" style="font-variation-settings: 'FILL' 1;">timer</span>
 </div>
 <div class="flex items-center justify-between z-10">
-<div class="flex items-center gap-3">
-<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary">
-<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">timer</span>
+<div class="flex items-center gap-2 sm:gap-3">
+<div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-2xl sm:text-3xl" style="font-variation-settings: 'FILL' 1;">timer</span>
 </div>
-<h2 class="font-headline-md text-headline-md text-on-surface">Lama Latihan</h2>
+<h2 class="font-headline-md text-headline-md text-on-surface text-sm sm:text-base">Lama Latihan</h2>
 </div>
-<div class="flex items-baseline gap-1 bg-white px-4 py-2 rounded-full border-2 border-tertiary-fixed">
-<span class="font-headline-lg text-headline-lg text-tertiary value-pop" id="dur-display">45</span>
-<span class="font-label-bold text-label-bold text-outline">menit</span>
+<div class="flex items-baseline gap-1 bg-white px-3 sm:px-4 py-2 rounded-full border-2 border-tertiary-fixed">
+<span class="font-headline-lg text-headline-lg text-tertiary value-pop text-2xl sm:text-3xl" id="dur-display">45</span>
+<span class="font-label-bold text-label-bold text-outline text-xs sm:text-sm">menit</span>
 </div>
 </div>
 <div class="z-10 mt-2">
 <input class="w-full appearance-none bg-transparent text-tertiary" max="180" min="0" type="range" id="duration" name="duration" value="45" oninput="updateDuration(this.value)"/>
-<div class="flex justify-between mt-2 font-label-bold text-label-bold text-outline">
+<div class="flex justify-between mt-2 font-label-bold text-label-bold text-outline text-xs sm:text-sm">
 <span>0</span>
 <span>180</span>
 </div>
@@ -428,13 +434,13 @@
 </div>
 </section>
 <!-- Action Button -->
-<section class="mt-4 flex justify-center gap-4 pb-stack-lg animate-fade-in-up opacity-0 delay-300">
-<a href="/" class="bg-white text-on-surface font-headline-md text-headline-md py-5 px-8 rounded-full squishy-shadow hover:brightness-110 transition-all border-4 border-[rgba(0,0,0,0.1)] flex items-center justify-center gap-3 hover-lift animate-scale-in opacity-0 delay-400">
-<span class="material-symbols-outlined text-3xl">arrow_back</span>
+<section class="mt-4 flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 pb-stack-lg animate-fade-in-up opacity-0 delay-300">
+<a href="/" class="bg-white text-on-surface font-headline-md text-headline-md py-4 sm:py-5 px-6 sm:px-8 rounded-full squishy-shadow hover:brightness-110 transition-all border-4 border-[rgba(0,0,0,0.1)] flex items-center justify-center gap-2 sm:gap-3 hover-lift animate-scale-in opacity-0 delay-400">
+<span class="material-symbols-outlined text-2xl sm:text-3xl">arrow_back</span>
                 Kembali
             </a>
-<button type="submit" class="w-full max-w-md bg-secondary-container text-on-surface font-headline-md text-headline-md py-5 px-8 rounded-full squishy-shadow hover:brightness-110 transition-all border-4 border-[rgba(0,0,0,0.1)] flex items-center justify-center gap-3 hover-lift animate-scale-in opacity-0 delay-500">
-<span class="material-symbols-outlined text-3xl animate-pulse" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<button type="submit" class="w-full sm:max-w-md bg-secondary-container text-on-surface font-headline-md text-headline-md py-4 sm:py-5 px-6 sm:px-8 rounded-full squishy-shadow hover:brightness-110 transition-all border-4 border-[rgba(0,0,0,0.1)] flex items-center justify-center gap-2 sm:gap-3 hover-lift animate-scale-in opacity-0 delay-500">
+<span class="material-symbols-outlined text-2xl sm:text-3xl animate-pulse" style="font-variation-settings: 'FILL' 1;">bolt</span>
                 Hitung Risiko Sekarang!
             </button>
 </section>
