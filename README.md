@@ -107,6 +107,13 @@ Halaman analisis menyediakan form input dengan slider interaktif untuk memasukka
 
 Halaman hasil menampilkan tingkat risiko heatstroke dengan gauge visual, langkah-langkah yang disarankan, dan detail perhitungan fuzzy.
 
-## Lisensi
 
-Project ini dibuat untuk keperluan responsi mata kuliah Kecerdasan Buatan.
+# Lisensi
+
+Proyek ini dibuat untuk keperluan akademik - Praktikum Kecerdasan Buatan.
+
+---
+
+<p align="center">
+  <b>🎓 Dibuat dengan ❤️ untuk Praktikum Kecerdasan Buatan 🎓</b>
+</p>
